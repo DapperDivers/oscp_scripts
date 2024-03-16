@@ -1,0 +1,64 @@
+#! /bin/bash
+
+
+#get the base defaults
+
+echo "Who are we hacking today?"
+read platform
+
+#to-do
+#check if its one we know
+
+echo "and the machine?"
+read machine_name
+
+
+#make reporting dirs and setup obsidian
+reporting_base_dir=~/Workspace/Reporting/${platform}/${machine_name}/
+
+if [ ! -d $reporting_base_dir ]; then
+  mkdir -p $reporting_base_dir;
+fi
+
+if [ ! -d $reporting_base_dir/enum ]; then
+  mkdir -p $reporting_base_dir/enum;
+  mkdir -p $reporting_base_dir/enum/internal;
+  mkdir -p $reporting_base_dir/enum/external;
+fi
+
+#copy all defauts to folder for obsidian
+cp -r obsidian/* $reporting_base_dir
+
+#create defaults for auto scanning
+hacking_base_dir=~/Workspace/${platform}/boxes/${machine_name}/
+
+#make hacking dirs
+mkdir -p ~/Workspace/${platform}/boxes/${machine_name}
+
+if [ ! -d $hacking_base_dir ]; then
+  mkdir -p $hacking_base_dir;
+fi
+
+#enum, exploit, loot, privesc
+if [ ! -d $hacking_base_dir/enum ]; then
+  mkdir -p $hacking_base_dir/enum;
+  mkdir -p $hacking_base_dir/exploit;
+  mkdir -p $hacking_base_dir/loot;
+  mkdir -p $hacking_base_dir/privesc;
+fi
+
+# clear the command prompt
+clear 
+
+figlet -f slant "Lets go!"
+
+echo "--connect to vpn via ${platform}"
+
+echo "--run sudo autorecon in current directory."
+
+#switch console to new location
+cd $hacking_base_dir
+
+
+#open obsidian
+#yes | open "obsidian://open?vault=Reporting" &

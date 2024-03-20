@@ -1,17 +1,13 @@
 #! /bin/bash
 
 
-#get the base defaults
-
+#get the base dir/ platform
 echo "Who are we hacking today?"
 read platform
 
-#to-do
-#check if its one we know
-
+# get machine name that we're hacking
 echo "and the machine?"
 read machine_name
-
 
 #make reporting dirs and setup obsidian
 reporting_base_dir=~/Workspace/Reporting/${platform}/${machine_name}/
@@ -50,14 +46,19 @@ fi
 # clear the command prompt
 clear 
 
-figlet -f slant "Lets go!"
-
-echo "--connect to vpn via ${platform}"
-
-echo "--run sudo autorecon in current directory."
-
 #switch console to new location
 cd $hacking_base_dir
+
+figlet -f slant "Lets go!"
+
+echo "..............................."
+
+# get machine name that we're hacking
+echo "Whats the IP?"
+read ip_addr
+
+#run autorecon
+autorecon ${ip_addr}
 
 
 #open obsidian

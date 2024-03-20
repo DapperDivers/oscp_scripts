@@ -23,20 +23,14 @@ if [ ! -d $reporting_base_dir/enum ]; then
 fi
 
 #copy all defauts to folder for obsidian
-cp -r obsidian/* $reporting_base_dir
+cp -r ~/Workspace/Scripts/oscp_scripts/hack_init/obsidian/* $reporting_base_dir
 
 #create defaults for auto scanning
-hacking_base_dir=~/Workspace/${platform}/boxes/${machine_name}/
+hacking_base_dir=~/Workspace/Boxes/${platform}/${machine_name}/
 
-#make hacking dirs
-mkdir -p ~/Workspace/${platform}/boxes/${machine_name}
-
+#make hacking dirs (enum, exploit, loot, privesc)
 if [ ! -d $hacking_base_dir ]; then
   mkdir -p $hacking_base_dir;
-fi
-
-#enum, exploit, loot, privesc
-if [ ! -d $hacking_base_dir/enum ]; then
   mkdir -p $hacking_base_dir/enum;
   mkdir -p $hacking_base_dir/exploit;
   mkdir -p $hacking_base_dir/loot;
@@ -53,12 +47,12 @@ figlet -f slant "Lets go!"
 
 echo "..............................."
 
-# get machine name that we're hacking
-echo "Whats the IP?"
-read ip_addr
+# # get machine name that we're hacking
+# echo "Whats the IP?"
+# read ip_addr
 
-#run autorecon
-autorecon ${ip_addr}
+# #run autorecon
+# autorecon ${ip_addr}
 
 
 #open obsidian
